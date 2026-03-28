@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './Pages/Home/Home';
-import login from './Pages/Login/login';
+import Login from './Pages/Login/login';
+import SignUp from './Pages/Login/SignUp'
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -15,7 +16,8 @@ const AppNavigation = () => {
         </Routes>
       ) : (
         <Routes>
-          <Route path="/" element={<login />} />
+          <Route path="/" element={<Login />} />
+          <Route path='/signup' element={<SignUp/>}/>
         </Routes>
       )}
     </>
