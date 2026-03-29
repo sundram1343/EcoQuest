@@ -10,23 +10,22 @@ function SignUp() {
   const [ConfirmPassword,setConfirmPassword]=useState('')
   const [error,seterror]=useState('')
   const handle =()=>{
-      if(name.trim===''){
-        seterror('Enter Valid Name');
-        return ;
-      }
-      else if(email.trim===''){
-        seterror('Enter Valid Email');
-        return;
-      }
-      else if(password!==ConfirmPassword){
-        seterror('Password Didn`t match')
-        return ;
-      }
-      else if(password.length<8){
-        seterror('The password length must to greater or equal to 8');
-        return ;
-      }
-
+    if(name.trim===''){
+      seterror('Enter Valid Name');
+       return ;
+    }
+    else if(email.trim===''){
+      seterror('Enter Valid Email');
+      return;
+    }
+    else if(password!==ConfirmPassword){
+      seterror('Password Didn`t match')
+      return ;
+    }
+    else if(password.length<8){
+      seterror('The password length must to greater or equal to 8');
+      return ;
+    }
   }
   return (
     <>
