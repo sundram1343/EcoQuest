@@ -1,8 +1,33 @@
 import React, { useState } from 'react'
 import './SignUp.css'
+import {Link} from 'react-router-dom'
 import image from '../../assets/SignUpImage.png'
+import {useAuth} from '../../context/AuthContext'
 function SignUp() {
   const [name,setname]=useState('')
+  const [email,setemail]=useState('');
+  const [password,setpassword]=useState('')
+  const [ConfirmPassword,setConfirmPassword]=useState('')
+  const [error,seterror]=useState('')
+  const handle =()=>{
+      if(name.trim===''){
+        seterror('Enter Valid Name');
+        return ;
+      }
+      else if(email.trim===''){
+        seterror('Enter Valid Email');
+        return;
+      }
+      else if(password!==ConfirmPassword){
+        seterror('Password Didn`t match')
+        return ;
+      }
+      else if(password.length<8){
+        seterror('The password length must to greater or equal to 8');
+        return ;
+      }
+
+  }
   return (
     <>
         <div id='Container'>
@@ -13,20 +38,48 @@ function SignUp() {
                 <img src={image} id='Image'/>
             </div>
             <div id='RightBox'>
-              <h1>Create Account</h1>
-              <p>Satrt Your Journey</p>
+              <span id='CreateText'>Create Account</span>
+              <span id='Start'>Start Your Journey</span>
               <div id='name'>
                 <label>Full Name</label>
                 <input
-                  type='name'
+                  type='text'
                   placeholder='Enter Name'
                   value={name}
-                  onChange={(text)=>setname(text)}
+                  onChange={(e)=>setname(e.target.value)}
                 />
               </div>
               <div id='Email'>
-
+                <label>Email</label>
+                <input
+                  type='email'
+                  placeholder='Enter the email'
+                  value={email}
+                  onChange={(e)=>setemail(e.target.value)}
+                />
               </div>
+              <div id='Password'>
+                <label>Password</label>
+                <input
+                  type='password'
+                  placeholder='Enter the Password'
+                  value={password}
+                  onChange={(e)=>setpassword(e.target.value)}
+                />
+              </div>
+              <div id='ConfirmPassword'>
+                <label>Confirm Password</label>
+                <input
+                  type='password'
+                  placeholder='Confirm Your Password'
+                  value={ConfirmPassword}
+                  onChange={(e)=>setConfirmPassword(e.target.value)}
+                />
+              </div>
+              <div id='SubmitButton' onClick={()=>handle}>
+                <p id='SubmitText'>Create Account</p>
+              </div>
+              <span id='alreadyUser'>Already User? <Link to='/login'  id='log'>Login Now</Link></span>
             </div>
         </div>
     </>
