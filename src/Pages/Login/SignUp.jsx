@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './SignUp.css'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import image from '../../assets/SignUpImage.png'
 import {useAuth} from '../../context/AuthContext'
 function SignUp() {
@@ -9,12 +9,14 @@ function SignUp() {
   const [password,setpassword]=useState('')
   const [ConfirmPassword,setConfirmPassword]=useState('')
   const [error,seterror]=useState('')
+  const {login}=useAuth();
+  const navigate=useNavigate();
   const handle =()=>{
-    if(name.trim===''){
+    if(name.trim()===''){
       seterror('Enter Valid Name');
        return ;
     }
-    else if(email.trim===''){
+    else if(email.trim()===''){
       seterror('Enter Valid Email');
       return;
     }
@@ -26,9 +28,13 @@ function SignUp() {
       seterror('The password length must to greater or equal to 8');
       return ;
     }
+    seterror('');
+    navigate('/home');
+    login(name);
   }
   return (
     <>
+    <div id='wrapper'>
         <div id='Container'>
             <div id='Left-Box'>
                 <span id='leaf'>🌿EcoQuest</span>
@@ -75,11 +81,13 @@ function SignUp() {
                   onChange={(e)=>setConfirmPassword(e.target.value)}
                 />
               </div>
-              <div id='SubmitButton' onClick={()=>handle}>
+              {error && <p style={{ color: 'red',backgroundColor:'#f8f9f8' }}>{error}</p>}
+              <div id='SubmitButton' onClick={()=>handle()}>
                 <p id='SubmitText'>Create Account</p>
               </div>
-              <span id='alreadyUser'>Already User? <Link to='/login'  id='log'>Login Now</Link></span>
+              <span id='alreadyUser'>Already User? <Link to='/'  id='log'>Login Now</Link></span>
             </div>
+        </div>
         </div>
     </>
   )

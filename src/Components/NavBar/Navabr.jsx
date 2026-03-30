@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './Navbar.css';
 import { FaUser } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
+import {useAuth} from '../../context/AuthContext'
 function Navbar() {
     const [Active,setActive] =useState('Home')
+    const {authUser}=useAuth();
   return (
     <>
         <div id="Header">
@@ -18,7 +20,7 @@ function Navbar() {
                 <a id='PointsButton'>Points</a>
                 <FaBell id='Bell' />
                 <div id='user'>
-                    <span id='Username'>username</span>
+                    <span id='Username'>{authUser}</span>
                     <FaUser id='usericon'/>
                 </div>
             </div>

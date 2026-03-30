@@ -1,20 +1,26 @@
-#Container{
+#wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
+#Container{
+    display: flex;
+    height: 600px;
+    box-shadow: 
+        0 10px 30px rgba(0, 100, 55, 0.15),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+    width: 70%;
+    border-radius: 20px;
+    overflow: hidden;
+}
 #Left-Box{
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 500px;
     z-index: 5;
     border:0px solid #006437;
-     box-shadow: 
-        0 10px 30px rgba(0, 100, 55, 0.15),
-        0 4px 10px rgba(0, 0, 0, 0.08);
-        margin-top:40px;
 }
 #leaf{
     font-size: 24px;
@@ -35,7 +41,7 @@
     height: 100%;
     width: 100%;
     max-height: 345px;
-    max-width:500px;
+    max-width:580px;
     overflow: hidden;
     border-radius: 20px; 
 }
@@ -48,9 +54,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 500px;
-    margin-top: 50px;
-    z-index: 5;
+    z-index: 0;
     border:0px solid #006437;
      box-shadow: 
         0 10px 30px rgba(0, 100, 55, 0.15),
@@ -61,15 +65,14 @@
 #CreateText{
     background-color: #f8f9f8;
     font-size: 27px;
-    padding: 10px;
     font-weight:900 ;
-    margin-bottom: 5px;
+    padding: 5px;
     color:#083c28 ;
 }
 #Start{
     font-size: 18px;
     font-weight: 200;
-    padding:10px;
+    padding:5px;
     background-color: #f8f9f8;
     margin-top: 0%;
     color:#00643785;
@@ -78,7 +81,7 @@
     display: flex;
     flex-direction: column;
     gap:5px;
-    padding: 10px;
+    padding: 5px;
     background-color: #f8f9f8;
 }
 #name label{
@@ -96,10 +99,9 @@
     font-weight: 700;
 }
 #Email{
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
     background-color: #f8f9f8;
 }
 #Email label{
@@ -113,14 +115,14 @@
     border-radius:20px ;
     height:40px;
     color:#236742;
-    margin-top: 8px;;
+    margin-top: 8px;
     font-weight: 700;
 }
 #Password{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
     background-color: #f8f9f8;
 }
 #Password label{
@@ -141,7 +143,7 @@
  margin-top: 10px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
     background-color: #f8f9f8;   
 }
 #ConfirmPassword label{
@@ -190,3 +192,4 @@
 #log{
     background-color: #f8f9f8;
 }
+

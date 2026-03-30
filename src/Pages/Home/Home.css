@@ -1,3 +1,21 @@
 *{
     background-color: #dbffe8;
 }
+#wrap{
+    display: flex;
+    justify-content: center;
+}
+#conatiner{
+    display: flex;
+    height:90%;
+    width: 90%;
+    max-height: 580px;
+    max-width: 580px;
+    background-color: #006130;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px #006130;
+    align-content: center;
+    margin-top: 30px;
+}

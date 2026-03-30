@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 function Login() {
+  const [email,setemail]=useState('');
+  const [password,setpassword]=useState('');
+  const [error,seterror]=useState('')
+  const handlelogin=()=>{
+    if(email.trim()===''){
+      seterror('Enter the correct email');
+      return ;
+    }
+    if(password.length<8){
+      seterror('Password Length is Shorter');
+      return ;
+    }
+  }
   return (
     <div className="main-wrapper">
       <div className="login-card">   
@@ -17,8 +31,10 @@ function Login() {
             <div className="input-with-icon">
               <span className="icon">✉️</span>
               <input
-                type="email"
+                type="text"
                 placeholder="Enter the Email"
+                value={email}
+                onChange={(e)=>setemail(e.target.value)}
               />
             </div>
           </div>
@@ -32,11 +48,14 @@ function Login() {
               <input
                 type="password"
                 placeholder="Enter Password"
+                value={password}
+                onChange={(e)=>setpassword(e.target.value)}
               />
               <span className="eye-icon">👁️</span>
             </div>
           </div>
-          <button className="primary-btn">
+          {error&&<p style={{color:'red'}}>{error}</p>}
+          <button className="primary-btn" onClick={()=>handlelogin()}>
             Get Started <span>→</span>
           </button>
           <div className="separator">
