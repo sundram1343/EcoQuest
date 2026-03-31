@@ -105,3 +105,79 @@ body{
   transform: scale(0.88);
   transition: transform 0.2s ease-in-out;
 }
+@media (max-width: 768px) {
+  #StartChallenge, #ExploreMore,#leftcontainer{
+    width: 100%;
+  }
+  #conatiner{
+    height:auto;
+
+  }
+}
+#SavedLine {
+  font-size: clamp(14px, 3.5vw, 18px);
+}
+#CentralContainer{
+    padding: 20px;
+    display: flex;
+    gap:10px;
+}
+#GrowthBox{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    background-color: #c4fedd;
+    border-radius: 30px;
+    height: 200px;
+    max-width: 350px;
+}
+#RocketContainer{
+    background-color: #b0efcb;
+    height:30px;
+    width:50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+#RocketIcon{
+    color: #298958;
+}
+#GrowthTitle{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color:#1c523c;
+}
+#GrowthDes{
+    padding: 15px 10px;
+    color: #487960;
+    font-size: 15px;
+}
+#GrowthButton{
+    padding:8px 10px;
+    color: #197d4b;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+  #CentralContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  #GrowthBox {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-height:600px) {
+    #CentralContainer{
+        flex-direction: column;
+    }
+    #GrowthBox{
+        height :auto;
+    }
+}

@@ -68,7 +68,8 @@
 }
 #Bell{
     color:#274a38;
-    height: 20px;
+    height: 32px;
+    width:32px
 }
 #Bell:hover{
     cursor: pointer;
@@ -84,7 +85,7 @@
     transition: all 0.3s ease-in-out;
 }
 #Username{
-    font-size: 15px;
+    font-size: 24px;
     font-weight: 550;
     color: #274a38;
 }
@@ -97,4 +98,43 @@
 #usericon:hover{
     transform: scale(1.2);
     transition: all 0.3s ease-in;
+}
+#Header-Elements > div:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  #Header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  #Header-Elements {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}@media (max-width: 480px) {
+  #PointsButton {
+    width: 80%;
+    max-width: 200px;
+  }
+}
+#ActiveElement::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #275f46;
+  transition: width 0.3s ease-in-out;
+}
+#ActiveElement:hover::after {
+  width: 100%;
+}
+#usericon {
+  border: 1px solid #274a38;
+  border-radius: 10px;
+  margin-top: 5px;
 }

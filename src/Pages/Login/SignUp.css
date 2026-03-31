@@ -30,7 +30,7 @@
     margin-left: 10px;
 }
 #Grow{
-    font-size: 50px;
+    font-size:50px;
     color:#31604f;
     font-weight: bold;
     margin-top: 20px;
@@ -190,6 +190,23 @@
     background-color: #f8f9f8;
 }
 #log{
+    color: #006437;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
     background-color: #f8f9f8;
 }
-
+@media (max-width: 480px) {
+  #Grow {
+    font-size: 32px;
+  }
+}
+#name input, #Email input, #Password input, #ConfirmPassword input {
+  border: 1px solid #31604f;
+}
+@media (max-width: 768px) {
+  #Container {
+    flex-direction: column;
+    height: auto;
+  }
+}

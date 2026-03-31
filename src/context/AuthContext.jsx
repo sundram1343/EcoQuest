@@ -8,7 +8,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [authUser, setAuthUser] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = (name) => {
     setAuthUser(name);
