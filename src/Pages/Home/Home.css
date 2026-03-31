@@ -1,21 +1,107 @@
-*{
+body{
     background-color: #dbffe8;
 }
 #wrap{
     display: flex;
     justify-content: center;
+    align-items: center;
+
 }
 #conatiner{
     display: flex;
-    height:90%;
-    width: 90%;
-    max-height: 580px;
-    max-width: 580px;
+    height:100%;
+    width: 100%;
+    max-height: 350px;
+    max-width: 900px;
     background-color: #006130;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
     border-radius: 20px;
     box-shadow: 0px 10px 30px #006130;
-    align-content: center;
     margin-top: 30px;
+}
+#StreakContainer{
+    display:flex;
+    background-color: #33855c;
+    padding: 10px;
+    border-radius: 50px;
+    height: 20px;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 130px;
+    align-content: center;
+}
+#Makingdifference{
+    background-color: #006130;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    color:#f8f8f8;
+    font-size: clamp(28px, 5vw, 50px);
+}
+#HomeImage{
+    display: flex;
+    height:auto;
+    width: auto;
+    justify-content: flex-end;
+    margin-left: auto;
+    border-radius: 20px;
+}
+#leftcontainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #006130;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+#SavedLine{
+    display: flex;
+    background-color: #006130;
+    padding: 10px;
+    color:#f8f8f89e;
+    font-size: 18px;
+}
+#ButtonContainer{
+    display: flex;
+    padding: 20px;
+    margin-top: -3px;
+    background-color: #006130;
+    margin-left: 10px;
+    gap:20px;
+}
+#StartChallenge{
+    background-color: #ffffff;
+    border-radius: 20px;
+    height:40px;
+    width: 120px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    color:#015029;
+    font-weight: 800;
+    cursor: pointer;
+}
+#ExploreMore{
+    background-color: #158447;
+    border-radius: 20px;
+    height:40px;
+    width: 120px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    color:#f8f8f8;
+    font-weight: 800;
+    cursor: pointer;
+}   
+#StartChallenge:active {
+  transform: scale(0.88);
+  transition: transform 0.2s ease-in-out;
+}
+#ExploreMore:active {
+  transform: scale(0.88);
+  transition: transform 0.2s ease-in-out;
 }
