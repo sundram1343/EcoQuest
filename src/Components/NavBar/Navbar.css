@@ -68,8 +68,8 @@
 }
 #Bell{
     color:#274a38;
-    height: 32px;
-    width:32px
+    height: 20px;
+    width:20px
 }
 #Bell:hover{
     cursor: pointer;
@@ -113,6 +113,10 @@
   #Header-Elements {
     flex-wrap: wrap;
     gap: 15px;
+  }
+  #Bell{
+    height: 20px;
+    width: 20px;
   }
 }@media (max-width: 480px) {
   #PointsButton {

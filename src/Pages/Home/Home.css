@@ -113,6 +113,17 @@ body{
     height:auto;
 
   }
+  
+}
+@media(max-width:583.5px){
+    #HomeImage{
+    display: none;
+
+  }
+  #leftcontainer{
+    width: 100%;
+    max-width: 900px;
+  }
 }
 #SavedLine {
   font-size: clamp(14px, 3.5vw, 18px);
@@ -120,7 +131,8 @@ body{
 #CentralContainer{
     padding: 20px;
     display: flex;
-    gap:10px;
+    gap:50px;
+    justify-content: center;
 }
 #GrowthBox{
     display: flex;
@@ -177,7 +189,174 @@ body{
     #CentralContainer{
         flex-direction: column;
     }
-    #GrowthBox{
+    #GrowthBox,#rank{
         height :auto;
+    }
+}
+#rank{
+    background-color: #aef1cc;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    border-radius: 30px;
+    height: 200px;
+    max-width: 350px;
+}
+#RankIconConatiner{
+    background-color: #9ce2c6;
+    height:30px;
+    width:50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+#RankIcon{
+    color: #00618f;
+    height:20px;
+    width: 20px;
+}
+#RankTitle{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color:#003622;
+}
+#RankButton{
+    padding:8px 10px;
+    color: #227c99;
+    font-weight: bold;
+}
+#Impact{
+    background-color: #fdd400;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    border-radius: 30px;
+    height: 200px;
+    max-width: 350px;
+}
+#TreeIconConatiner{
+    background-color: #ecc600;
+    height:30px;
+    width:50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+#TreeIcon{
+    color: #594a00;
+    height:20px;
+    width: 20px;
+}
+#ImpactTitle{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color:#635200;
+}
+.ImpactDes {
+  padding: 15px 10px;
+  color: #a68b00;
+  font-size: 15px;
+}
+.ImpactButton{
+    padding:10px 10px;
+    color: #625200;
+    font-weight: bold;
+}
+.CurrentChallenges{
+display: flex;
+flex-direction: column;
+}
+.Current{
+    font-size: 24px;
+    color: #093e29;
+    font-weight: 700;
+}
+.ViewALL{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -50px;
+    margin-right: 10px;
+    color: #2a694a;
+    font-weight: 700;
+}
+.Des{
+    margin-top: -2px;
+    color:#5c8871;
+}
+.ChallengesConatiner{
+    display: flex;
+    gap:40px;
+    justify-content: center;
+}
+#Challenge1{
+    box-shadow: 0px 5px 15px #000000;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    height: 100%;
+    width: 100%;
+    max-width: 380px;
+}
+.Points{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: 10px;
+    color:#197849;
+    font-weight: 800;
+}
+.DifficultyContainer{
+    margin-top: -17px;
+    margin-left: 10px;
+    background-color: #a7d7ff;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 20px;
+}
+.Difficulty{
+    color: #004e7c;
+    font-weight: 700;
+}
+.contain{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ChallengeName{
+    margin-top: 10px;
+    color: #053a27;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 12px;
+}
+.ChallengeDes{
+    margin-top: -10px;
+    margin-left: 10px;
+    color: #5c8871;
+}
+.ProgressBar{
+    display: flex;
+    margin-left: 50px;
+    width: 300px;
+}
+@media (max-width: 768px) {
+    .ChallengesConatiner{
+        flex-direction: column;
+        align-items: center;
+    }
+    #Challenge1{
+        width: 100%;
+        max-width: 380px;
     }
 }

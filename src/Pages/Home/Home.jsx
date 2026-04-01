@@ -37,16 +37,49 @@ function Home() {
           <p id='GrowthButton'>Go Now →</p>
         </div>
         <div id='rank'>
+          <div id='RankIconConatiner'>
           <PiRankingLight id='RankIcon' />
-          <span>View LeaderBoard</span>
-          <span>See your ranking</span>
-          <span>See ranking →</span>
+          </div>
+          <span id='RankTitle'>View LeaderBoard</span>
+          <span id='GrowthDes'>See your ranking</span>
+          <span id='RankButton'>See ranking →</span>
         </div>
         <div id='Impact'>
+          <div id='TreeIconConatiner'>
           <LuTrees id='TreeIcon'/>
-          <span>My Impact</span>
-          <span>See the visual growth of your digital garden</span>
-          <span>Track Growth →</span>
+          </div>
+          <span id='ImpactTitle'>My Impact</span>
+          <span className='ImpactDes'>See the visual growth of your digital garden</span>
+          <span className='ImpactButton'>Track Growth →</span>
+        </div>
+      </div>
+      <div className='CurrentChallenges'>
+        <p className='Current'>Current Challenges</p>
+        <p className='ViewALL'>View All</p>
+        <p className='Des'>Active Tasks waiting for you!</p>
+        <div className='ChallengesConatiner'>
+          <div id='Challenge1'>
+            <span className='Points'>+250XP</span>
+            <div className='DifficultyContainer'>
+              <span className='Difficulty'>Moderate</span>
+            </div>
+            <div className='contain'>
+              <span className='ChallengeName'>Plastic Free Week</span>
+              <span className='ChallengeDes'>Avoid all single- use plastics for 7 days. Take a photo of your reusable </span>
+              <progress className='ProgressBar' value={0.28}/>
+            </div>
+          </div>
+          <div id='Challenge1'>
+            <span className='Points'>+100XP</span>
+            <div className='DifficultyContainer'>
+              <span className='Difficulty'>Easy</span>
+            </div>
+            <div className='contain'>
+              <span className='ChallengeName'>Nature Walk</span>
+              <span className='ChallengeDes'>Complete a 30-minute walk </span>
+            </div>
+            <progress className='ProgressBar' value={0.5}/>
+          </div>
         </div>
       </div>
     </>
