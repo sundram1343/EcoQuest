@@ -6,10 +6,15 @@ import {useAuth} from '../../context/AuthContext'
 function Navbar() {
     const [Active,setActive] =useState('Home')
     const {authUser}=useAuth();
+    const rendercontent=()=>{
+        switch(Active){
+            case 'Home':
+                
+        }
+    }
   return (
     <>
         <div id="Header">
-            <h1 id="Header-Title">EcoQuest</h1>
             <div id='Header-Elements'>
                 <a id={Active==='Home'?'ActiveElement':'NonActiveElement'} onClick={()=>setActive('Home')}>Home</a>
                 <a id={Active==='Tasks'?'ActiveElement':'NonActiveElement'} onClick={()=>setActive('Tasks')}>Tasks</a>

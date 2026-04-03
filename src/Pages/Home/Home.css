@@ -1,5 +1,8 @@
 body{
     background-color: #dbffe8;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 #wrap{
     display: flex;
@@ -273,13 +276,14 @@ body{
     font-weight: bold;
 }
 .CurrentChallenges{
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .Current{
     font-size: 24px;
     color: #093e29;
     font-weight: 700;
+    margin-left:10px;
 }
 .ViewALL{
     display: flex;
@@ -292,6 +296,7 @@ flex-direction: column;
 .Des{
     margin-top: -2px;
     color:#5c8871;
+    margin-left: 10px;
 }
 .ChallengesConatiner{
     display: flex;
@@ -299,12 +304,14 @@ flex-direction: column;
     justify-content: center;
 }
 #Challenge1{
+    display: flex;
     box-shadow: 0px 5px 15px #000000;
     border-radius: 20px;
     background-color: #f8f8f8;
-    height: 100%;
-    width: 100%;
-    max-width: 380px;
+    width: 350px;
+    height:180px;
+    flex-direction: column;
+    padding: 12px;
 }
 .Points{
     display: flex;
@@ -315,7 +322,8 @@ flex-direction: column;
     font-weight: 800;
 }
 .DifficultyContainer{
-    margin-top: -17px;
+    display: flex;
+    margin-top: -20px;
     margin-left: 10px;
     background-color: #a7d7ff;
     width: 100px;
@@ -331,24 +339,29 @@ flex-direction: column;
 .contain{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 10px;
+    flex-grow: 1;
 }
 .ChallengeName{
-    margin-top: 10px;
     color: #053a27;
     font-weight: 700;
     font-size: 18px;
     margin-left: 12px;
 }
 .ChallengeDes{
-    margin-top: -10px;
     margin-left: 10px;
     color: #5c8871;
 }
 .ProgressBar{
     display: flex;
-    margin-left: 50px;
-    width: 300px;
+    width: 250px;
+}
+.ProgressContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
 }
 @media (max-width: 768px) {
     .ChallengesConatiner{

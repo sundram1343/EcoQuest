@@ -1,7 +1,11 @@
 import React from 'react'
 import './Home.css'
+//importing components
 import Navbar from '../../Components/NavBar/Navabr'
+import Footer from '../../Components/Footer/Footer'
+//importing custom Hooks
 import { useAuth } from '../../context/AuthContext'
+//importing assets
 import HomeImage from '../../assets/HomeImage.png'
 import { FaRocket } from "react-icons/fa";
 import { PiRankingLight } from "react-icons/pi"
@@ -66,7 +70,9 @@ function Home() {
             <div className='contain'>
               <span className='ChallengeName'>Plastic Free Week</span>
               <span className='ChallengeDes'>Avoid all single- use plastics for 7 days. Take a photo of your reusable </span>
-              <progress className='ProgressBar' value={0.28}/>
+             <div className='ProgressContainer'>
+            <progress className='ProgressBar' value={0.28}/>
+            </div>
             </div>
           </div>
           <div id='Challenge1'>
@@ -78,10 +84,13 @@ function Home() {
               <span className='ChallengeName'>Nature Walk</span>
               <span className='ChallengeDes'>Complete a 30-minute walk </span>
             </div>
-            <progress className='ProgressBar' value={0.5}/>
+            <div className='ProgressContainer'>
+              <progress className='ProgressBar' value={0.5}/>
+            </div>
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }
