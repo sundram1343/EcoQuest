@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SignUp';
+import Impact from './Pages/Impact/Impact';
+import LeaderBoard from './Pages/LeaderBoard/LeaderBoard';
+import Tasks from './Pages/Tasks/Tasks';
 import { AuthProvider, useAuth } from './context/AuthContext';
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   return isLoggedIn ? children : <Navigate to="/" replace />;
@@ -18,6 +21,9 @@ const AppNavigation = () => {
         element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
             <Home />
+            <Impact/>
+            <LeaderBoard/>
+            <Tasks/>
           </ProtectedRoute>
         }
       />

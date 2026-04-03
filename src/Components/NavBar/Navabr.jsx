@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import {useAuth} from '../../context/AuthContext'
 function Navbar() {
     const [Active,setActive] =useState('Home')
+    const navigate = useNavigate();
     const {authUser}=useAuth();
     const rendercontent=()=>{
         switch(Active){
-            case 'Home':
-                
-        }
+                case 'Home':
+                    navigate('/home')
+                    break;
+                case 'Tasks':              
+                    navigate('/tasks')
+                    break;
+                case 'LeaderBoard':
+                    navigate('/leaderboard')
+                    break;
+                case 'Impact':
+                    navigate('/impact')
+                    break;  
+            }
     }
   return (
     <>
@@ -30,6 +42,7 @@ function Navbar() {
                 </div>
             </div>
         </div>
+        {rendercontent()}
     </>
   );
 }
