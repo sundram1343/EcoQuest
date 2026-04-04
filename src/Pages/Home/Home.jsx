@@ -1,8 +1,6 @@
 import React from 'react'
 import './Home.css'
 //importing components
-import Navbar from '../../Components/NavBar/Navabr'
-import Footer from '../../Components/Footer/Footer'
 //importing custom Hooks
 import { useAuth } from '../../context/AuthContext'
 //importing assets
@@ -14,7 +12,6 @@ function Home() {
   const {authUser} =useAuth();
   return (
     <>
-      <div><Navbar/></div>
       <div id='wrap'>
         <div id='conatiner'>
           <div id='leftcontainer'>
@@ -90,7 +87,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   )
 }

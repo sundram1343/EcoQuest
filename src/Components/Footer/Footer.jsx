@@ -3,6 +3,7 @@ import './Footer.css'
 function Footer() {
   return (
     <>
+    <div className='MainFooter'>
         <div className="footer">
       <div className="footer-left">
         EcoQuest
@@ -17,6 +18,7 @@ function Footer() {
       <div className="footer-right">
         © 2024 ECOQUEST ECOSYSTEM. ALL RIGHTS RESERVED.
       </div>
+    </div>
     </div>
     </>
   )

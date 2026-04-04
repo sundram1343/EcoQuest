@@ -6,37 +6,45 @@ import SignUp from './Pages/Login/SignUp';
 import Impact from './Pages/Impact/Impact';
 import LeaderBoard from './Pages/LeaderBoard/LeaderBoard';
 import Tasks from './Pages/Tasks/Tasks';
+import Navbar from './Components/NavBar/Navabr';
+import Footer from './Components/Footer/Footer';
 import { AuthProvider, useAuth } from './context/AuthContext';
-const ProtectedRoute = ({ isLoggedIn, children }) => {
-  return isLoggedIn ? children : <Navigate to="/" replace />;
-};
 const AppNavigation = () => {
   const { isLoggedIn } = useAuth();
+
+  if (isLoggedIn) {
+    return (
+      <>
+        <Navbar />
+
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/leaderboard" element={<LeaderBoard />} />
+            <Route path="/impact" element={<Impact />} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route
-        path="/home"
-        element={
-          <ProtectedRoute isLoggedIn={isLoggedIn}>
-            <Home />
-            <Impact/>
-            <LeaderBoard/>
-            <Tasks/>
-          </ProtectedRoute>
-        }
-      />
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };
-
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <AppNavigation />
+        <div className="layout">
+          <AppNavigation />
+        </div>
       </Router>
     </AuthProvider>
   );

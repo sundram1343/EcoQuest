@@ -1,14 +1,12 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 40px;
   background-color: #b7d7c4; 
   border-top: 1px solid rgba(0,0,0,0.1);
   flex-wrap: wrap;
   margin-top: 30px;
-  flex:1;     
-  border-radius: 0; 
+  margin: auto;
 }
 .footer-left {
   font-size: 20px;
@@ -43,4 +41,8 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+.MainFooter{
+  flex:1;
+  justify-content: space-around;
 }
