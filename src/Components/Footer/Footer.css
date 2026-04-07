@@ -5,6 +5,7 @@
   background-color: #b7d7c4; 
   border-top: 1px solid rgba(0,0,0,0.1);
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .footer-left {
   font-size: 20px;
