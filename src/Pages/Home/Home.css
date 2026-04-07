@@ -303,6 +303,7 @@ body{
     gap:40px;
     justify-content: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 #Challenge1{
     display: flex;

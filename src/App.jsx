@@ -17,7 +17,7 @@ const AppNavigation = () => {
       <>
         <Navbar />
 
-        <div className="content">
+        <div style={{flex:1}}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tasks" element={<Tasks />} />
