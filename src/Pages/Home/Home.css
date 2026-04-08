@@ -177,6 +177,9 @@ body{
     color: #197d4b;
     font-weight: bold;
 }
+#GrowthButton:hover{
+    cursor: pointer;
+} 
 @media (max-width: 768px) {
   #CentralContainer {
     flex-direction: column;
@@ -233,6 +236,9 @@ body{
     color: #227c99;
     font-weight: bold;
 }
+#RankButton:hover{
+    cursor: pointer;
+}
 #Impact{
     background-color: #fdd400;
     display: flex;
@@ -274,6 +280,9 @@ body{
     padding:10px 10px;
     color: #625200;
     font-weight: bold;
+}
+.ImpactButton:hover{
+    cursor: pointer;
 }
 .CurrentChallenges{
     display: flex;
@@ -371,7 +380,7 @@ body{
         align-items: center;
     }
     #Challenge1{
-        width: 100%;
-        max-width: 380px;
+        width: 80%;
+        max-width: 320px;
     }
 }

@@ -16,29 +16,22 @@
     position: relative;
 
 }
-#NonActiveElement{
+.NonActiveElement{
     font-size: 18px;
     font-weight: 500;
     color: #637f6f;
+    text-decoration: none;
 }
 #Header-Elements :hover{
     transform: scale(1.1);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-#ActiveElement{
+.ActiveElement{
     color:#184b31;
     font-size: 20px;
-    position: relative;
 }
-#ActiveElement::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #275f46;
+.ActiveElement::after {
   transform: scale(1.1);
 }
 #PointsButton{
@@ -124,17 +117,8 @@
     max-width: 200px;
   }
 }
-#ActiveElement::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #275f46;
-  transition: width 0.3s ease-in-out;
-}
-#ActiveElement:hover::after {
+
+.ActiveElement:hover::after {
   width: 100%;
 }
 #usericon {

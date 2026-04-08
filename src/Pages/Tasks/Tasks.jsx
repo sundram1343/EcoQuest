@@ -9,6 +9,16 @@ function Tasks() {
         <span>
           Turn your daily habits into a global impact. Complete Tasks to earn points and grow your digital garden
         </span>
+        <div className='LevelSection'>
+          <div className='ProfileContainer'>
+            <img className='ProfilePicture' src='https://wallpapers.com/images/hd/iron-man-without-mask-efho6tashj8t1qkb.jpg'/>
+            <span className='LevelShown'>Level</span>
+          </div>
+          <div className='ExpContainer'>
+            <span>left exp for next rank</span>
+            <progress max={100} value={50} style={{ accentColor: '#006a35' }} />
+          </div>
+        </div>
       </div>
 
       <div className='ChallengesConatiner'>
@@ -26,7 +36,7 @@ function Tasks() {
             </span>
 
             <div className='StartContainer'>
-              <span>Start</span>
+              <span className='Start'>Start</span>
             </div>
           </div>
         </div>

@@ -3,12 +3,14 @@ import './Home.css'
 //importing components
 //importing custom Hooks
 import { useAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 //importing assets
 import HomeImage from '../../assets/HomeImage.png'
 import { FaRocket } from "react-icons/fa";
 import { PiRankingLight } from "react-icons/pi"
 import { LuTrees } from "react-icons/lu";
 function Home() {
+  const navigate = useNavigate();
   const {authUser} =useAuth();
   return (
     <>
@@ -35,7 +37,7 @@ function Home() {
           </div>
           <span id='GrowthTitle'>Start Challenge</span>
           <span id='GrowthDes'>New Daily Tasks availabe to boost your rank</span>
-          <p id='GrowthButton'>Go Now →</p>
+          <p id='GrowthButton' onClick={()=>navigate('/tasks')}>Go Now →</p>
         </div>
         <div id='rank'>
           <div id='RankIconConatiner'>
@@ -43,7 +45,7 @@ function Home() {
           </div>
           <span id='RankTitle'>View LeaderBoard</span>
           <span id='GrowthDes'>See your ranking</span>
-          <span id='RankButton'>See ranking →</span>
+          <span id='RankButton' onClick={()=>navigate('/leaderboard')}>See ranking →</span>
         </div>
         <div id='Impact'>
           <div id='TreeIconConatiner'>
@@ -51,7 +53,7 @@ function Home() {
           </div>
           <span id='ImpactTitle'>My Impact</span>
           <span className='ImpactDes'>See the visual growth of your digital garden</span>
-          <span className='ImpactButton'>Track Growth →</span>
+          <span className='ImpactButton' onClick={()=>navigate('/impact')}>Track Growth →</span>
         </div>
       </div>
       <div className='CurrentChallenges'>
