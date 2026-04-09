@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SignUp';
 import Impact from './Pages/Impact/Impact';
+import Profile from './Pages/Profile/Profile';
 import LeaderBoard from './Pages/LeaderBoard/LeaderBoard';
 import Tasks from './Pages/Tasks/Tasks';
 import Navbar from './Components/NavBar/Navabr';
@@ -24,6 +25,7 @@ const AppNavigation = () => {
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/leaderboard" element={<LeaderBoard />} />
             <Route path="/impact" element={<Impact />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
 

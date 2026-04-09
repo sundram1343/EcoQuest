@@ -48,7 +48,9 @@
 }
 #header-last-element{
     display: flex;
+    justify-content: space-between;
     gap:20px;
+    margin-right: 20px;
 }
 #PointsButton:hover{
     transform: scale(1.2);

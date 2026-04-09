@@ -1,0 +1,26 @@
+.MainWrap{
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    width:auto;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ContentWrap{
+    border: 1px solid #000;
+    width: 100px;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.ContentWrap span{
+    font-size: 15px;
+    font-weight: 800;
+    
+}
