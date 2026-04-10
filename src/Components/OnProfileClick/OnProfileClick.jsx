@@ -4,11 +4,11 @@ import './OnProfileClick.css'
 function OnProfileClick() {
     const navigate = useNavigate();
   return (
-    <div class="MainWrap">
-        <div class="ContentWrap">
+    <div className="MainWrap">
+        <div className="ContentWrap">
            <span onClick={() => navigate('/profile')}>Profile</span> 
         </div>
-        <div class="ContentWrap">
+        <div className="ContentWrap">
            <span>Logout</span> 
         </div>
     </div>
