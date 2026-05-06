@@ -53,6 +53,23 @@ const userSchema= new Schema({
     recycled:{
         type:Number,
         default:0
+    },
+    completedQuest:{
+        type:[mongoose.Schema.Types.ObjectId],
+        ref:'Quest',
+        default:[]
+    },
+    bio:{
+        type:String,
+        default:''
+    },
+    phoneno:{
+        type:String,
+        default:''
+    },
+    location:{
+        type:String,
+        default:''
     }
 })
 module.exports=mongoose.model('User',userSchema);

@@ -16,7 +16,7 @@ function Profile() {
             <img src="https://wallpapers.com/images/hd/iron-man-without-mask-efho6tashj8t1qkb.jpg" />
           </div>
           <div className="ProfileInfoContainer">
-            <span className="ProfileMemberSince">Member Since June 2025</span>
+            <span className="ProfileMemberSince">Member Since June 2025</span> 
             <span className="ProfileName">Iron Man</span>
             <span className="ProfilePageRank">Rank</span>
             <span className="ProfileBio">Bio</span>
@@ -72,16 +72,12 @@ function Profile() {
           <div className="InputRow">
             <div className="InputGroup">
               <label>Phone Number</label>
-              <input type="tel" placeholder="+1 234 567 890" defaultValue="+1 987 654 321" disabled={!isEditing} />
+              <input type="text" placeholder="+1 234 567 890" defaultValue="+1 987 654 321" disabled={!isEditing} />
             </div>
             <div className="InputGroup">
               <label>Location</label>
               <input type="text" placeholder="City, Country" defaultValue="Malibu, CA" disabled={!isEditing} />
             </div>
-          </div>
-          <div className="InputGroup">
-            <label>Street Address</label>
-            <input type="text" placeholder="123 Main St" defaultValue="10880 Malibu Point, 90265" disabled={!isEditing} />
           </div>
           {isEditing && (
             <div className="ProfileFormActions">
