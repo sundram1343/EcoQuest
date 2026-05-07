@@ -16,12 +16,13 @@ const registerUser=async(req,res)=>{
             email:email,
             password:hashedPassword
         })
+        let token=jwt.sign({id:user._id},process.env.JWT_SECRET);
         if(user){
             res.status(201).json({
                 _id:user._id,
                 username:user.username,
                 email:user.email,
-                token:generateToken(user._id)
+                token
             })
         }
         else {
@@ -35,19 +36,20 @@ const registerUser=async(req,res)=>{
 const loginUser =async(req,res)=>{
     try{
         const {username,password}=req.body;
-        const user=await User.findOnde({username});
+        const user=await User.findOne({username});
         if(!user){
-            res.status(401).json({ message: 'Invalid email or password' });
+            res.status(401).json({ message: 'Invalid username or password' });
         }
         const isMatch=await bcrypt.compare(password,user.password);
         if(!isMatch){
-            res.status(401).json({ message: 'Invalid email or password' });
+            res.status(401).json({ message: 'Invalid username or password' });
         }
+        let token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1h'});
         res.status(200).json({
             _id:user._id,
             username:user.username,
             email:user.email,
-            token:generateToken(user._id)
+            token
         })
     }
     catch(error){
@@ -61,8 +63,7 @@ const getData=async(req,res)=>{
         res.status(200).json({
             _id:user._id,
             username:user.username,
-            email:user.email,
-            token:generateToken(user._id)
+            email:user.email
         })
     }
     catch(error){
@@ -70,4 +71,14 @@ const getData=async(req,res)=>{
         res.status(500).json({ message: 'Server error during get data' });
     }
 };
-module.exports={registerUser,loginUser,getData}
+const logout=async(req,res)=>{
+    try{
+        res.cookie('token','')
+        res.status(200).json({ message: 'Logged out successfully' });
+    }
+    catch(error){
+        console.error('Logout Error:', error);
+        res.status(500).json({ message: 'Server error during logout' });
+    }
+}
+module.exports={registerUser,loginUser,getData,logout}

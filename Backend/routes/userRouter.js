@@ -1,0 +1,7 @@
+const express=require('express');
+const router=express.Router();
+const {profile,updateProfile}=require('../controllers/userController');
+const protect = require('../middleware/authMiddleware');
+router.post('/profile/:userId',protect,profile);
+router.post('/updateprofile/:userId',protect,updateProfile);
+module.exports=router;
