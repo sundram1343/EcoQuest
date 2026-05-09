@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import './Home.css'
 //importing components
 //importing custom Hooks
@@ -9,9 +9,23 @@ import HomeImage from '../../assets/HomeImage.png'
 import { FaRocket } from "react-icons/fa";
 import { PiRankingLight } from "react-icons/pi"
 import { LuTrees } from "react-icons/lu";
+import axios from 'axios';
 function Home() {
   const navigate = useNavigate();
   const {authUser} =useAuth();
+  const [co2saved,setCO2saved]=useState(10);
+  useEffect(()=>{
+    async function fetchdata(){
+      const token=localStorage.getItem('token');
+      try{
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/getData`,{headers:{Authorization:`Bearer ${token}`}});
+        setCO2saved(res.data.co2saved);
+      }catch(error){
+        console.log(error);
+      }
+    }
+    fetchdata();
+  },[]);
   return (
     <>
       <div id='wrap'>
@@ -20,8 +34,8 @@ function Home() {
           <div id='StreakContainer'>
             <p style={{color:'#f8f8f8',backgroundColor:'#33855c'}}>🔥5-Day Streaks !</p>
           </div>
-          <span id='Makingdifference'>You are making a Real Difference {authUser?.name||'User'}</span>
-          <span id='SavedLine'>Your eco-efforts this week Saved 12kg of CO2.Keep Your Momentum going!</span>
+          <span id='Makingdifference'>You are making a Real Difference {authUser||'User'}</span>
+          <span id='SavedLine'>Your eco-efforts have Saved {co2saved}kg of CO2. Keep Your Momentum going!</span>
           <div id='ButtonContainer'>
             <span id='StartChallenge'>Start Challenge</span>
             <span id='ExploreMore'>Explore more</span>

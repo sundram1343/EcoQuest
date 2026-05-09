@@ -3,6 +3,7 @@ const Schema=mongoose.Schema;
 const userSchema= new Schema({
     email:{
         type:String,
+        unique:true,
         required:true,
     },
     password:{
@@ -16,11 +17,9 @@ const userSchema= new Schema({
     },
     DOB:{
         type:Date,
-        required:true,
     },
     Gender:{
         type:String,
-        required:true,
         enum:['Male','Female','Others']
     },
     treeplanted:{

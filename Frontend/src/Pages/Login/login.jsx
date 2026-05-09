@@ -20,19 +20,19 @@ function Login() {
       return ;
     }
     try{
-      const res=await axios.post(`${import.meta.env.Backend}/auth/login`,{
-        email:email,
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/auth/login`,{
+        email:email.toLowerCase(),
         password:password
       });
       seterror('');
-      localStorage.setItem("token",res.data.token);
-      login(res.data.user.name);
+      login(res.data.user,res.data.token);
       navigate('/');
     }
     catch(err){
       if (err.response) {
       seterror(err.response.data.message || "Login failed");
     } else {
+      console.log(err);
       seterror("Server error");
     }
     }

@@ -3,13 +3,30 @@ import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import { FaUser, FaBell } from "react-icons/fa";
 import { useAuth } from '../../context/AuthContext';
+import axios from 'axios';
 import OnProfileClick from '../OnProfileClick/OnProfileClick';
 function Navbar() {
   const { authUser } = useAuth();
   const [showProfile, setShowProfile] = useState(false);
-  const profileRef = useRef(null); 
+  const profileRef = useRef(null);
+  const [points,setPoints]=useState(0);
 
   useEffect(() => {
+    const token=localStorage.getItem('token');
+    async function loadData(){
+    if(token){
+      try{
+        const res=await axios.get(`${import.meta.env.VITE_BACKEND}/auth/getData`,{
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        })
+        setPoints(res.data.points);
+      }
+      catch(err){console.log(err);}
+    }
+    loadData();
+  }
     function handleClickOutside(event) {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setShowProfile(false);
@@ -35,7 +52,7 @@ function Navbar() {
         </div>
 
         <div id='header-last-element'>
-          <span id='PointsButton'>Points</span>
+          <span id='PointsButton'>{points}</span>
           <FaBell id='Bell' />
 
           <div ref={profileRef}>

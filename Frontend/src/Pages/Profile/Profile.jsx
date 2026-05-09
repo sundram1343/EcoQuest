@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import './Profile.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
+import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
 function Profile() {
+  const {authUser}=useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const maxExp=1200;
   const currentExp=1100;
@@ -17,8 +20,7 @@ function Profile() {
           </div>
           <div className="ProfileInfoContainer">
             <span className="ProfileMemberSince">Member Since June 2025</span> 
-            <span className="ProfileName">Iron Man</span>
-            <span className="ProfilePageRank">Rank</span>
+            <span className="ProfileName">{authUser}</span>
             <span className="ProfileBio">Bio</span>
           </div>
         </div>
@@ -62,11 +64,11 @@ function Profile() {
           <div className="InputRow">
             <div className="InputGroup">
               <label>Full Name</label>
-              <input type="text" placeholder="John Doe" defaultValue="Iron Man" disabled={!isEditing} />
+              <input type="text" placeholder="John Doe" defaultValue={authUser} disabled={!isEditing} />
             </div>
             <div className="InputGroup">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com" defaultValue="[EMAIL_ADDRESS]" disabled={!isEditing} />
+              <input type="email" placeholder="john@example.com"  disabled={!isEditing} />
             </div>
           </div>
           <div className="InputRow">

@@ -31,18 +31,18 @@ function SignUp() {
       return ;
     }
     try{
-      const response=await axios.post(`${import.meta.env.Backend}/auth/register`,{
+      const response=await axios.post(`${import.meta.env.VITE_BACKEND}/auth/register`,{
         name:name,
-        email:email,
+        email:email.toLowerCase(),
         password:password
       });
       seterror('');
-      localStorage.setItem("token", response.data.token);
-      login(response.data.user.name);
+      login(response.data.user,response.data.token);
       navigate('/');
     }
     catch(err){
       if (err.response) {
+        console.log(err.response);
       seterror(err.response.data.message || "SignUp failed");
     } else {
       seterror("Server error");

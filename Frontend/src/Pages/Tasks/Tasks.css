@@ -68,12 +68,12 @@ html, body, #root {
     height:40px;
     border-radius: 20px;
 }
-.ProfileContainer{
+.ProfileCContainer{
     display: flex;
     flex-direction: row;
     margin-right:50px;
 }
-.ProfileContainer span{
+.ProfileCContainer span{
     margin-top: 3px;
     color:#073d28;
     font-weight: 600;
