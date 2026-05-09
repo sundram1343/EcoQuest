@@ -31,7 +31,7 @@ function SignUp() {
       return ;
     }
     try{
-      const response=await axios.post(`${process.env.Backend}/signup`,{
+      const response=await axios.post(`${import.meta.env.Backend}/auth/register`,{
         name:name,
         email:email,
         password:password
@@ -41,9 +41,9 @@ function SignUp() {
       login(response.data.user.name);
       navigate('/');
     }
-    catch(error){
+    catch(err){
       if (err.response) {
-      seterror(err.response.data.message || "Login failed");
+      seterror(err.response.data.message || "SignUp failed");
     } else {
       seterror("Server error");
     }
@@ -99,7 +99,7 @@ function SignUp() {
                 />
               </div>
               {error && <p style={{ color: 'red',backgroundColor:'#f8f9f8' }}>{error}</p>}
-              <div id='SubmitButton' onClick={()=>handle()}>
+              <div id='SubmitButton' onClick={handle}>
                 <p id='SubmitText'>Create Account</p>
               </div>
               <span id='alreadyUser'>Already User? <Link to='/'  id='log'>Login Now</Link></span>

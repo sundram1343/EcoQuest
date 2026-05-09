@@ -3,6 +3,7 @@ const jwt=require('jsonwebtoken');
 const User=require('../models/user-model');
 const registerUser=async(req,res)=>{
     try{
+        const {name,email,password}=req.body;
         if (!name || !email || !password) {
             return res.status(400).json({ message: 'Please add all fields' });
         }
@@ -12,7 +13,7 @@ const registerUser=async(req,res)=>{
         }
         const hashedPassword= await bcrypt.hash(password,process.env.saltRounds);
         const user=await User.create({
-            username:name,
+            name:name,
             email:email,
             password:hashedPassword
         })
@@ -20,7 +21,7 @@ const registerUser=async(req,res)=>{
         if(user){
             res.status(201).json({
                 _id:user._id,
-                username:user.username,
+                name:user.name,
                 email:user.email,
                 token
             })
@@ -35,14 +36,14 @@ const registerUser=async(req,res)=>{
 };
 const loginUser =async(req,res)=>{
     try{
-        const {username,password}=req.body;
-        const user=await User.findOne({username});
+        const {email,password}=req.body;
+        const user=await User.findOne({email});
         if(!user){
-            res.status(401).json({ message: 'Invalid username or password' });
+           return res.status(401).json({ message: 'Invalid username or password' });
         }
         const isMatch=await bcrypt.compare(password,user.password);
         if(!isMatch){
-            res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).json({ message: 'Invalid username or password' });
         }
         let token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1h'});
         res.status(200).json({

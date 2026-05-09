@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 function Login() {
+  const navigate=useNavigate();
   const [email,setemail]=useState('');
   const [password,setpassword]=useState('');
   const [error,seterror]=useState('');
@@ -19,23 +20,22 @@ function Login() {
       return ;
     }
     try{
-      const response=await axios.post(`${process.env.Backend}/login`,{
+      const res=await axios.post(`${import.meta.env.Backend}/auth/login`,{
         email:email,
         password:password
       });
       seterror('');
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token",res.data.token);
       login(res.data.user.name);
       navigate('/');
     }
-    catch(error){
+    catch(err){
       if (err.response) {
       seterror(err.response.data.message || "Login failed");
     } else {
       seterror("Server error");
     }
     }
-    
   }
   return (
     <div className="main-wrapper">
@@ -45,14 +45,14 @@ function Login() {
           <h1>EcoQuest</h1>
           <p>Your journey to a greener world starts here.</p>
         </div>
-        <div className="form-container">
+        <form className="form-container" onSubmit={handlelogin}>
           <h2>Welcome Back</h2>
           <div className="input-field">
             <label>EMAIL ADDRESS</label>
             <div className="input-with-icon">
               <span className="icon">✉️</span>
               <input
-                type="text"
+                type="email"
                 placeholder="Enter the Email"
                 value={email}
                 onChange={(e)=>setemail(e.target.value)}
@@ -76,7 +76,7 @@ function Login() {
             </div>
           </div>
           {error&&<p style={{color:'red'}}>{error}</p>}
-          <button className="primary-btn" onClick={()=>handlelogin()}>
+          <button className="primary-btn" type='submit' >
             Get Started <span>→</span>
           </button>
           <div className="separator">
@@ -90,7 +90,7 @@ function Login() {
             Don't have an account?{" "}
             <Link to='/signup' className="link">Create an account</Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );

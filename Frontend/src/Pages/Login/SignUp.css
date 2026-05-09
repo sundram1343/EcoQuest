@@ -210,3 +210,11 @@
     height: auto;
   }
 }
+@media (max-width:769px) {
+    #Left-Box{
+        display: none;
+    }
+    #CreateText{
+        text-align: center;
+    }
+}
