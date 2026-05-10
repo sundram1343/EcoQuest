@@ -72,7 +72,6 @@ function Login() {
                 value={password}
                 onChange={(e)=>setpassword(e.target.value)}
               />
-              <span className="eye-icon">👁️</span>
             </div>
           </div>
           {error&&<p style={{color:'red'}}>{error}</p>}

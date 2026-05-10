@@ -1,16 +1,15 @@
 .ProfileHeader{
     display: flex;
     justify-content: center;
+    gap:10px
 
 }
 .ProfileContainer{
     width: 30%;
     min-width: 300px;
-    
     display: flex;
     align-items: center;
     gap: 20px;             
-    
     background-color: #adfecc;
     padding: 20px;
     border-radius: 20px;
@@ -182,11 +181,38 @@
     box-sizing: border-box;
 }
 
-.InputGroup input:focus {
+.InputGroup input:focus,
+.InputGroup textarea:focus {
     outline: none;
     border-color: #30905e;
     background-color: #ffffff;
     box-shadow: 0 0 0 4px rgba(48, 144, 94, 0.1);
+}
+
+.BioTextArea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #e0f2e9;
+    background-color: #f7fcf9;
+    font-size: 15px;
+    color: #1e5f3d;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.BioTextArea:disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: #1e5f3d;
+    padding: 14px 0;
+    font-weight: 500;
+    -webkit-text-fill-color: #1e5f3d; 
+    opacity: 1; 
+    resize: none;
 }
 
 .InputGroup input:disabled {

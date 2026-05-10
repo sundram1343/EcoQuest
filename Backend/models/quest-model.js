@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const questSchema=new Schema({
+const questSchema=new mongoose.Schema({
     title:{
         type:String,
         required:true,

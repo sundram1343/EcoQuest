@@ -1,27 +1,102 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import './Profile.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 function Profile() {
+  const inputRef = useRef(null);
   const {authUser}=useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const maxExp=1200;
-  const currentExp=1100;
+  const [email,setEmail]=useState('');
+  const [phone,setPhone]=useState('');
+  const [location,setLocation]=useState('');
+  const maxExp=1000;
+  const [currentExp,setCurrentExp]=useState(0);
+  const [profilepic,setProfilepic]=useState('');
+  const [bio,setBio]=useState('');
+  const [level,setLevel]=useState(1);
+  useEffect(()=>{
+    const token=localStorage.getItem('token');
+    try{
+      async function getProfile(){
+        const res=await axios.get(`${import.meta.env.VITE_BACKEND}/user/profile/${authUser?._id}`,{
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        })
+        setEmail(res.data.email);
+        setPhone(res.data.phoneno);
+        setLocation(res.data.location);
+        setCurrentExp(res.data.points);
+        setBio(res.data.bio);
+        setLevel(res.data.level);
+        setProfilepic(res.data.profileImage);
+      } 
+      getProfile();
+    }catch(err){
+      console.log(err);
+    }
+  },[])
   const percentage=(currentExp/maxExp)*100;
-  const level=maxExp/100;
+  const handleUpdate=async(e)=>{
+    e.preventDefault();
+    setIsEditing(false)
+    try{
+      const token=localStorage.getItem('token');
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofile/${authUser?._id}`,{
+        email,
+        phoneno:phone,
+        location,
+        bio
+      },{
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      })
+    }catch(err){
+      console.log(err);
+    }
+  }
+  const handleclick=()=>{
+    inputRef.current.click();
+  }
+  const handlefile=async(e)=>{
+    e.preventDefault();
+    const token=localStorage.getItem('token');
+    try{
+      const formData=new FormData();
+      formData.append('profileImage',e.target.files[0]);
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofile/${authUser?._id}`,{
+        profileImage:formData
+      },{
+        headers:{
+          Authorization:`Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      setProfilepic(res.data.profileImage);
+    }catch(err){
+      console.log(err);
+    }
+  }
   return (
     <>
       <div className="ProfileHeader">
         <div className="ProfileContainer">
-          <div className="ProfileImageContainer">
-            <img src="https://wallpapers.com/images/hd/iron-man-without-mask-efho6tashj8t1qkb.jpg" />
+          <div className="ProfileImageContainer" onClick={handleclick}>
+            <img src={profilepic || null} alt="Profile" />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlefile}
+              ref={inputRef}
+            />
           </div>
-          <div className="ProfileInfoContainer">
+          <div className="ProfileInfoContainer" >
             <span className="ProfileMemberSince">Member Since June 2025</span> 
             <span className="ProfileName">{authUser}</span>
-            <span className="ProfileBio">Bio</span>
+            <span className="ProfileBio">{bio || 'No bio added yet'}</span>
           </div>
         </div>
         <div className="ProfilePointsContainer">
@@ -60,7 +135,7 @@ function Profile() {
             </button>
           )}
         </div>
-        <form className="ProfileForm" onSubmit={(e) => { e.preventDefault(); setIsEditing(false); }}>
+        <form className="ProfileForm" onSubmit={handleUpdate}>
           <div className="InputRow">
             <div className="InputGroup">
               <label>Full Name</label>
@@ -68,17 +143,29 @@ function Profile() {
             </div>
             <div className="InputGroup">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com"  disabled={!isEditing} />
+              <input type="email" placeholder="john@example.com" value={email} onChange={(e)=>setEmail(e.target.value)}  disabled={!isEditing} />
             </div>
           </div>
           <div className="InputRow">
             <div className="InputGroup">
               <label>Phone Number</label>
-              <input type="text" placeholder="+1 234 567 890" defaultValue="+1 987 654 321" disabled={!isEditing} />
+              <input type="number" placeholder="Enter your Phone Number"  value={phone} onChange={(e)=>setPhone(e.target.value)} disabled={!isEditing} />
             </div>
             <div className="InputGroup">
               <label>Location</label>
-              <input type="text" placeholder="City, Country" defaultValue="Malibu, CA" disabled={!isEditing} />
+              <input type="text" placeholder="Enter your Location"  value={location} onChange={(e)=>setLocation(e.target.value)} disabled={!isEditing} />
+            </div>
+          </div>
+          <div className="InputRow">
+            <div className="InputGroup">
+              <label>Bio</label>
+              <textarea 
+                placeholder="Tell us about yourself..." 
+                value={bio} 
+                onChange={(e)=>setBio(e.target.value)} 
+                disabled={!isEditing}
+                className="BioTextArea"
+              />
             </div>
           </div>
           {isEditing && (
