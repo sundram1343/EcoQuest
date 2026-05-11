@@ -20,7 +20,7 @@ function Profile() {
     const token=localStorage.getItem('token');
     try{
       async function getProfile(){
-        const res=await axios.get(`${import.meta.env.VITE_BACKEND}/user/profile/${authUser?._id}`,{
+        const res=await axios.get(`${import.meta.env.VITE_BACKEND}/user/profile`,{
           headers:{
             Authorization:`Bearer ${token}`
           }
@@ -44,7 +44,7 @@ function Profile() {
     setIsEditing(false)
     try{
       const token=localStorage.getItem('token');
-      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofile/${authUser?._id}`,{
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofile`,{
         email,
         phoneno:phone,
         location,
@@ -67,9 +67,7 @@ function Profile() {
     try{
       const formData=new FormData();
       formData.append('profileImage',e.target.files[0]);
-      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofile/${authUser?._id}`,{
-        profileImage:formData
-      },{
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND}/user/updateprofilepicture`,formData,{
         headers:{
           Authorization:`Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -85,7 +83,7 @@ function Profile() {
       <div className="ProfileHeader">
         <div className="ProfileContainer">
           <div className="ProfileImageContainer" onClick={handleclick}>
-            <img src={profilepic || null} alt="Profile" />
+            <img src={`${import.meta.env.VITE_BACKEND}/uploads/${profilepic}` || null} alt="Profile" />
             <input
               type="file"
               accept="image/*"

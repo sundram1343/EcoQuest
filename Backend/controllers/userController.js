@@ -25,9 +25,6 @@ const updateProfile = async (req, res) => {
                 message: 'User not found'
             });
         }
-        if (req.file) {
-            User.profileImage = req.file.filename;
-        }
         User.name = req.body.name || User.name;
         User.email = req.body.email || User.email;
         User.DOB = req.body.DOB || User.DOB;
@@ -44,4 +41,26 @@ const updateProfile = async (req, res) => {
         });
     }
 }
-module.exports={profile,updateProfile};
+const updateProfilePicture = async (req, res) => {
+    try {
+
+        const User = await user.findById(req.user);
+
+        if (!User) {
+            return res.status(400).json({
+                message: 'User not found'
+            });
+        }
+        if (req.file) {
+            User.profileImage = req.file.filename;
+        }
+        await User.save();
+        return res.status(200).json(User);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+} 
+module.exports={profile,updateProfile,updateProfilePicture};

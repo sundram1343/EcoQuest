@@ -8,7 +8,7 @@ const cors=require('cors');
 const app=express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static('uploads'));
+app.use('/uploads',express.static('uploads'));
 connectDB();
 app.use('/auth',authRoutes);
 app.use('/user',userRoutes);
