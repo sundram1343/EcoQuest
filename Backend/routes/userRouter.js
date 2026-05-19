@@ -1,9 +1,10 @@
 const express=require('express');
 const router=express.Router();
-const {profile,updateProfile,updateProfilePicture}=require('../controllers/userController');
+const {profile,updateProfile,updateProfilePicture,getLeaderBoard}=require('../controllers/userController');
 const protect = require('../middleware/authMiddleware');
 const upload=require('../middleware/uploadMiddleware');
 router.get('/profile',protect,profile);
 router.post('/updateprofile',protect,updateProfile);
 router.post('/updateprofilepicture',protect,upload.single('profileImage'),updateProfilePicture);
+router.get('/leaderboard',protect,getLeaderBoard);
 module.exports=router;

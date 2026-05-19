@@ -63,4 +63,40 @@ const updateProfilePicture = async (req, res) => {
         });
     }
 } 
-module.exports={profile,updateProfile,updateProfilePicture};
+const getLeaderBoard = async (req, res) => {
+  try {
+    const users = await user.find({}, { name: 1, profileImage: 1, level: 1, points: 1 });
+    const usersWithTotal = users.map(u => ({
+      _id: u._id,
+      name: u.name,
+      profileImage: u.profileImage,
+      level: u.level,
+      points: u.points,
+      totalPoints: u.level * 1000 + u.points
+    }));
+    usersWithTotal.sort((a, b) => b.totalPoints - a.totalPoints);
+    const top10 = usersWithTotal.slice(0, 10).map((u, idx) => ({
+      ...u,
+      rank: idx + 1
+    }));
+    const currentUser = usersWithTotal.find(u => u._id.toString() === req.user);
+    if (!currentUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const rank = usersWithTotal.findIndex(u => u._id.toString() === req.user) + 1;
+
+    return res.status(200).json({
+      top: top10,
+      userRank: rank,
+      userPoints: currentUser.points,
+      userLevel: currentUser.level,
+      userName: currentUser.name,
+      userProfile: currentUser.profileImage,
+      userTotalPoints: currentUser.totalPoints
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+module.exports={profile,updateProfile,updateProfilePicture,getLeaderBoard};

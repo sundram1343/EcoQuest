@@ -185,4 +185,13 @@
         width: 100%;
         height: auto;
     }
+    .Impact-Page-Image{
+        width:50%
+    }
+    .WeeklyContainer{
+        width:50%
+    }
+    .StartContainer{
+        width:50%
+    }
 }

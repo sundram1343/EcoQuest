@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import './LeaderBoard.css'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 function LeaderBoard() {
   const navigate = useNavigate();
+  const [leaderboard,setleaderboard]=useState([]);
+  const [rank,setRank]=useState();
+  const [points,setpoints]=useState();
+  const [name,setName]=useState();
+  const [profile,setProfile]=useState();
+  const [level,setLevel]=useState();
+  useEffect(()=>{
+   async function getLeaderBoard(){
+    const token =localStorage.getItem('token');
+    try{
+    const res=await axios.get(`${import.meta.env.VITE_BACKEND}/user/leaderboard`,
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    );
+    setleaderboard(res.data.top);
+    setRank(res.data.userRank);
+    setpoints(res.data.userPoints);
+    setName(res.data.userName);
+    setProfile(res.data.userProfile);
+    setLevel(res.data.userLevel);
+  }catch(error){
+    console.log(error);
+  }} 
+   getLeaderBoard();
+  },[])
   return (
     <>
       <div className='Header'>
@@ -15,18 +44,26 @@ function LeaderBoard() {
           <span className='Rank'>Rank</span>
           <span className='Point'>Points</span>
         </div>
-        <div className='RankConatiner'>
-            <span className='No'>1</span>
-            <img src='https://wallpapers.com/images/hd/iron-man-without-mask-efho6tashj8t1qkb.jpg'/>
-            <span className='Name'>Iron Man</span>
-            <span className='points'>1000</span>
+        <div className='Top10'>
+          {leaderboard.map((player, index) => (
+          <div className='RankConatiner' key={player._id}>
+            <span className='No'>{player.rank}</span>
+            <img src={`${import.meta.env.VITE_BACKEND}/uploads/${player.profileImage}`} alt="avatar"/> 
+            <span className='Name'>{player.name}</span>
+            <span className='points'>
+            {player.level !== undefined && player.points !== undefined
+              ? (1000 * player.level) + player.points
+              : 0}
+            </span>
+          </div>
+        ))}
         </div>
         <div className='YourRankContainer'>
           <div className='YourRank'>
-            <span className='YourNo'>1</span>
-            <img src='https://wallpapers.com/images/hd/iron-man-without-mask-efho6tashj8t1qkb.jpg'/>
-            <span className='YourName'>Iron Man</span>
-            <span className='Yourpoints'>1000</span>
+            <span className='YourNo'>{rank}</span>
+            <img src={`${import.meta.env.VITE_BACKEND}/uploads/${profile}`} alt="avatar"/>
+            <span className='YourName'>{name}</span>
+            <span className='Yourpoints'>{(1000*level)+points}</span>
           </div>
         </div>
       </div>

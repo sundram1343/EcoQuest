@@ -63,9 +63,9 @@ function Impact() {
         <span className='WeeklyContainer-Text'>Weekly Milestone</span>
        </div>
        <span className='YourGarden'>Your Garden is Breathing deeper today, {authUser}</span>
-       <span>Your efforts this month have offset the equivalent of {driveDistance}km car!</span>
-       <div className='StartContainer'>
-        <span onClick={()=>navigate('/tasks')}>Start a new Quest</span>
+       <span>Your efforts this week have offset the equivalent of {driveDistance}km car!</span>
+       <div className='StartContainer' onClick={()=>navigate('/tasks')}>
+        <span>Start a new Quest</span>
        </div>
       </div>
     </>
